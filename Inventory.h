@@ -13,4 +13,10 @@ typedef struct {
     float price;
 } Item;
 
+/*function prototypes*/
+void addItem();
+void displayItems();
+void searchItem();
+void updateQuantity();
+
 #endif // INVENTORY_H
