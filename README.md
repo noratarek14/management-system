@@ -29,7 +29,7 @@ The Inventory Management System is a simple, file-based application written in C
 ### Steps
 1- Clone or download the project files.
 2- Open a terminal and navigate to the project directory.
-3- Compile the program using--> gcc -o inventory main.c inventory.c
+3- Compile the program using--> gcc main.c Inventory.c -o inventory
 4- Run the program using --> ./inventory
 
 ## Usage Instructions
