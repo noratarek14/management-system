@@ -23,16 +23,19 @@ int main(){
             case 2:
                 displayItems();
                 break;
-             case 3:
+            case 3:
                 searchItem();
-                break;        
+                break;   
             case 4:
+                updateQuantity();
+                break;         
+            case 5:
                 printf("Exiting the program.\n");
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");    
         }
 
-    }while(choice !=4);
+    }while(choice !=5);
     return 0;
 }
