@@ -36,6 +36,6 @@ int main(){
                 printf("Invalid choice. Please try again.\n");    
         }
 
-    }while(choice !=5);
+    }while(choice !=2);
     return 0;
 }
