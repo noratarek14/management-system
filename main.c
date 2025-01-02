@@ -1,4 +1,4 @@
-#include "inventory.h"
+#include "Inventory.h"
 #include <stdio.h>
 
 int main(){
@@ -20,8 +20,13 @@ int main(){
             case 1:
                 addItem();
                 break;
+            case 2:
+                printf("Exiting the program.\n");
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");    
         }
 
-    }while(choice !=5);
+    }while(choice !=2);
     return 0;
 }
