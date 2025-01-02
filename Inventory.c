@@ -44,7 +44,6 @@ void addItem() {
 
 }
 
-
 /*Function is responsible for reading the contents of the inventory file and displaying the items stored in it.*/
 void displayItems() {
     FILE *file = fopen(FILENAME, "r");
@@ -59,6 +58,35 @@ void displayItems() {
     Item temp;
     while (fscanf(file, "%d,%49[^,],%d,%f\n", &temp.id, temp.name, &temp.quantity, &temp.price) == 4) {
         printf("%d\t%-10s\t%d\t	%.2f\n", temp.id, temp.name, temp.quantity, temp.price);
+    }
+
+    fclose(file);
+}
+
+/*function allows the user to search for an item in the inventory by its name.*/
+void searchItem() {
+    FILE *file = fopen(FILENAME, "r");
+    if (!file) {
+        perror("Error opening file");
+        return;
+    }
+
+    char searchName[MAX_NAME_LENGTH];
+    printf("Enter Name to Search: ");
+    scanf("%s", searchName);
+
+    Item temp;
+    int found = 0;
+    while (fscanf(file, "%d,%49[^,],%d,%f\n", &temp.id, temp.name, &temp.quantity, &temp.price) == 4) {
+        if (strcasecmp(temp.name, searchName) == 0) {
+            printf("Found: ID=%d, Name=%s, Quantity=%d, Price=%.2f\n", temp.id, temp.name, temp.quantity, temp.price);
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("Item not found.\n");
     }
 
     fclose(file);
