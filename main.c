@@ -22,14 +22,17 @@ int main(){
                 break;
             case 2:
                 displayItems();
-                break;    
-            case 3:
+                break;
+             case 3:
+                searchItem();
+                break;        
+            case 4:
                 printf("Exiting the program.\n");
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");    
         }
 
-    }while(choice !=3);
+    }while(choice !=4);
     return 0;
 }
