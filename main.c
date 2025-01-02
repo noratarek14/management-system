@@ -21,12 +21,15 @@ int main(){
                 addItem();
                 break;
             case 2:
+                displayItems();
+                break;    
+            case 3:
                 printf("Exiting the program.\n");
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");    
         }
 
-    }while(choice !=2);
+    }while(choice !=3);
     return 0;
 }
