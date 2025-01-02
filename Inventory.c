@@ -17,7 +17,7 @@ void addItem() {
     printf("Enter ID: ");
     scanf("%d",&newItem.id);
     printf("Enter Name: ");
-    scanf("%d",&newItem.name);
+    scanf("%s",&newItem.name);
     printf("Enter Quantity: ");
     scanf("%d",&newItem.quantity);
     printf("Enter Price: ");
@@ -40,7 +40,5 @@ void addItem() {
 
     /*Close the file*/
     fclose(file);
-
-
 
 }
