@@ -5,7 +5,8 @@
 
 /*function allows the user to add a new item to the inventory*/
 void addItem() {
-    FILE *file = fopen(FILENAME, "a+");
+    /*Open the file in append mood to add new items*/
+    FILE *file = fopen(FILENAME, "a+"); 
     if (!file) {
         perror("Error opening file");
         return;
