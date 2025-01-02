@@ -205,3 +205,63 @@ void searchItem() {
 
     fclose(file);
 }
+/*Function is responsible for modifying the quantity of an existing inventory item identified by its unique ID*/
+void updateQuantity() {
+    FILE *file = fopen(FILENAME, "r");
+    if (!file) {
+        perror("Error opening file");
+        return;
+    }
+/*Array to store inventory items*/
+Item items[MAX_ITEMS];  
+int count = 0;
+
+/*Read all items from the file*/ 
+while (fscanf(file, "%d,%49[^,],%d,%f\n", &items[count].id, items[count].name, 
+              &items[count].quantity, &items[count].price) == 4) {
+    count++;
+    if (count >= MAX_ITEMS) {
+        printf("Error: Maximum inventory size exceeded. Increase MAX_ITEMS if needed.\n");
+        fclose(file);
+        return;
+    }
+}
+fclose(file);
+
+int updateId, newQuantity;
+printf("Enter ID to Update: ");
+scanf("%d", &updateId);
+printf("Enter New Quantity: ");
+scanf("%d", &newQuantity);
+
+int found = 0;
+
+/*Search for the item by ID*/
+for (int i = 0; i < count; i++) {
+    if (items[i].id == updateId) {
+        items[i].quantity = newQuantity;
+        found = 1;
+        break;
+    }
+}
+
+if (!found) {
+    printf("Item with ID %d not found.\n", updateId);
+    return;
+} 
+else {
+    /*Rewrite the file with updated data*/
+    file = fopen(FILENAME, "w");
+    if (!file) {
+       perror("Error opening file for writing");
+       return;
+    }
+} 
+
+for (int i = 0; i < count; i++) {
+    fprintf(file, "%d,%s,%d,%.2f\n", items[i].id, items[i].name, items[i].quantity, items[i].price);
+}
+fclose(file);
+
+printf("Quantity updated successfully.\n");
+}
